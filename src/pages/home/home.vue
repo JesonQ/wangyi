@@ -40,7 +40,8 @@ export default {
     indexScroll(){
       let scroll = new BScroll('.indexScrollWrap',{
         scrollY: true,
-        click: true
+        click: true,
+        useTransition:false        
       })
     }
   },

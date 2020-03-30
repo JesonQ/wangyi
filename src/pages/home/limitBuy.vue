@@ -2,7 +2,14 @@
   <div class="limitBuy">
     <div class="limitBuyTitle">
       <div class="time">
-         <span>限时购</span>
+        <span>限时购</span>
+        <van-count-down :time="time">
+          <template v-slot="timeData">
+            <span class="item1 item">{{ timeData.hours }}</span>
+            <span class="item2 item">{{ timeData.minutes }}</span>
+            <span class="item3 item">{{ timeData.seconds }}</span>
+          </template>
+        </van-count-down>
       </div>
       <div class="more">
         更多>
@@ -58,10 +65,17 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import { CountDown } from 'vant';
 
-
+Vue.use(CountDown);
 export default {
-  name:"limitBuy"
+  name:"limitBuy",
+  data() {
+    return {
+      time: 30 * 60 * 60 * 1000
+    };
+  }
 }
 </script>
 
@@ -80,6 +94,25 @@ export default {
       justify-content space-between
       .time
         font-size 30px
+        position relative
+        .item 
+          display inline-block
+          width 40px
+          height 40px
+          text-align center
+          line-height 40px
+          color #fff
+          font-size 12px
+          text-align center
+          background-color #000
+          position absolute
+          top -5px
+          &.item1
+            left 120px
+          &.item2
+            left 170px
+          &.item3
+            left 220px
     .limitBuyBottom
       display flex
       height 300px
@@ -102,7 +135,4 @@ export default {
           del 
             color #666
             font-size 20px
-
-      
-
 </style>
