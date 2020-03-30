@@ -1,7 +1,7 @@
 <template>
   <div class="headerNav">
       <div class="nav-scroll">
-        <span class="navScrollItem underLine">推荐</span>
+        <span class="navScrollItem active">推荐</span>
         <span class="navScrollItem">流行</span>
         <span class="navScrollItem">商贸商贸</span>
         <span class="navScrollItem">流行</span>
@@ -32,7 +32,9 @@ export default {
     }
   },
   mounted(){
-    this.headerScroll()
+    this.$nextTick(()=>{
+      this.headerScroll()
+    })
   }
 }
 </script>
@@ -41,6 +43,20 @@ export default {
 .headerNav
   width 100%
   height 60px
-  background-color skyblue 
   padding 0 20px
+  box-sizing border-box
+  overflow hidden
+  .nav-scroll
+    width 100%
+    height 60px
+    display flex
+    align-items center
+    white-space nowrap
+    .navScrollItem
+      display inline-block
+      margin 0 20px
+      padding 10px 0 
+      &.active
+        border-bottom 1px solid red
+        color red
 </style>
