@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .sellershop
     width 100%
     padding 20px

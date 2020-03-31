@@ -10,8 +10,14 @@ const postcss = px2rem({
 module.exports={
     lintOnSave:false,
     devServer:{
-        port:3002,
-        open:true
+        port:3000,
+        open:true,
+        proxy:{   //跨域配置
+          '/3000': {
+              target: 'http://localhost:3000',
+              changeOrigin: true, //允许跨域
+          }
+        }
     },
     css: {
       loaderOptions: {

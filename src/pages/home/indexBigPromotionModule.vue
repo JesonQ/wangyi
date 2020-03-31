@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .indexBigPromotionModule
     background-color #117E85
     height 600px

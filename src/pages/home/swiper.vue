@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .my-swipe
   width 100%
   height 370px

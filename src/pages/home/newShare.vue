@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .newShare
   background pink 
   width 100%

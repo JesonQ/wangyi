@@ -2,27 +2,33 @@
     <footer class="footer_guide border-1px">
         <a @click="goto(`/home`)"  :class="{on:$route.path === `/home`}"  href="javascript:;" class="guide_item">
             <span class="item_icon">
-              <i class="iconfont icon-waimai"></i>
+              <i class="iconfont icon-shouye"></i>
             </span>
-            <span>外卖</span>
+            <span>主页</span>
         </a>
-        <a @click="goto(`/Search`)" :class="{on:$route.path === `/Search`}" href="javascript:;" class="guide_item">
+        <a @click="goto(`/classify`)" :class="{on:$route.path === `/classify`}" href="javascript:;" class="guide_item">
             <span class="item_icon">
-              <i class="iconfont icon-search"></i>
+              <i class="iconfont icon-fenlei"></i>
             </span>
-            <span>搜索</span>
+            <span>分类</span>
         </a>
-        <a @click="goto(`/Order`)"  :class="{on:$route.path === `/Order`}" href="javascript:;" class="guide_item">
+        <a @click="goto(`/buy`)"  :class="{on:$route.path === `/buy`}" href="javascript:;" class="guide_item">
             <span class="item_icon">
-              <i class="iconfont icon-dingdan"></i>
+              <i class="iconfont icon-mai"></i>
             </span>
-            <span>订单</span>
+            <span>值得买</span>
         </a>
-        <a @click="goto(`/Profile`)" :class="{on:$route.path === `/Profile`}" href="javascript:;" class="guide_item">
+        <a @click="goto(`/cart`)" :class="{on:$route.path === `/cart`}" href="javascript:;" class="guide_item">
+            <span class="item_icon">
+              <i class="iconfont icon-gouwuche"></i>
+            </span>
+            <span>购物车</span>
+        </a>
+        <a @click="goto(`/user`)" :class="{on:$route.path === `/user`}" href="javascript:;" class="guide_item">
             <span class="item_icon">
               <i class="iconfont icon-geren"></i>
             </span>
-            <span>我的</span>
+            <span>个人</span>
         </a>
     </footer>
 </template>
@@ -40,9 +46,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-    @import "../../common/stylus/mixins.styl"
     .footer_guide
-        top-border-1px(#e4e4e4)
         position fixed
         z-index 100
         left 0
@@ -50,7 +54,7 @@
         bottom 0
         background-color #fff
         width 100%
-        height 50px
+        height 100px
         display flex
         .guide_item
             display flex
@@ -59,13 +63,11 @@
             flex-direction column
             align-items center
             margin 5px
-            color #999999
             &.on
-                color #02a774
+                color red !important
             span
-                font-size 12px
+                font-size 30px
                 margin-top 2px
-                margin-bottom 2px
                 .iconfont
-                    font-size 22px
+                    font-size 50px
 </style>

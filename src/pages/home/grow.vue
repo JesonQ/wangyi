@@ -1,16 +1,8 @@
 <template>
   <div class="grow">
-    <div class="left">
-      <i class="iconfont icon-airudiantubiaohuizhi-zhuanqu_yiwutong"></i>
-      <span>网易自营品牌</span>
-    </div>
-    <div class="center">
-      <i class="iconfont icon-duigou"></i>
-      <span>网易自营品牌</span>
-    </div>
-    <div class="right">
-      <i class="iconfont icon-qian"></i>
-      <span>网易自营品牌</span>
+    <div class="growItem" v-for="(growItem,index) in growList" :key="index">
+      <img :src="growItem.icon" alt="">
+      <span>{{growItem.desc}}</span>
     </div>
   </div>
 </template>
@@ -19,7 +11,22 @@
 import "@/common/fonts/iconfont.css"
 
 export default {
-  name:"grow"
+  name:"grow",
+  data() {
+    return {
+      growList:[]
+    }
+  },
+  methods:{
+    async getgrowList(){
+      let getgrowListData = await this.$http.home.getIndex()
+      console.log(getgrowListData.policyDescList)
+      this.growList = getgrowListData.policyDescList
+    }
+  },
+  mounted(){
+    this.getgrowList()
+  }
 }
 </script>
 
@@ -33,8 +40,14 @@ export default {
     display flex
     align-items center
     justify-content space-around
-    i 
-      margin-right 10px
-      display inline-block
-      color red
+    .growItem
+      img 
+        width 32px
+        height 32px
+        vertical-align middle
+      span 
+        margin-right 10px
+        display inline-block
+        vertical-align middle
+
 </style>

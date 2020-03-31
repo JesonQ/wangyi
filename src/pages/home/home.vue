@@ -16,6 +16,7 @@
         <v-indexFooter></v-indexFooter>
       </div>
     </div>
+    <v-Footer></v-Footer>
   </div>
 </template>
 
@@ -32,6 +33,7 @@ import limitBuy from "./limitBuy"
 import newProduct from "./newProduct"
 import sellershop from "./sellershop"
 import indexFooter from "./indexFooter"
+import Footer from "components/indexFooter/indexFooter"
 // 主页滚动
 import BScroll from 'better-scroll'
 export default {
@@ -45,8 +47,10 @@ export default {
       })
     }
   },
-  mounted(){
+  async mounted(){
     this.indexScroll()
+    let dataRes = await this.$http.home.getIndex()
+    console.log(dataRes)
   },
   components:{
     "v-search":search,    // home search
@@ -60,12 +64,13 @@ export default {
     "v-limitBuy":limitBuy,
     "v-newProduct":newProduct,
     "v-sellershop":sellershop,
-    "v-indexFooter":indexFooter,
+    "v-indexFooter":indexFooter,  //home 底部
+    "v-Footer":Footer,   //底部导航
   }
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .indexScrollWrap
     height calc(100vh - 103px)
     overflow hidden
