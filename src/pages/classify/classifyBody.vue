@@ -26,39 +26,41 @@
        </ul>
      </div>
      <div class="classifyBodyR">
-      <img src="https://yanxuan.nosdn.127.net/9f4bcf0d57149499584d59478a606e9e.jpg">
-      <div class="list">
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
-        </div>
-        <div class="listItem">
-          <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-          <span>充值特惠</span>
+      <div class="inner">
+        <img src="https://yanxuan.nosdn.127.net/9f4bcf0d57149499584d59478a606e9e.jpg">
+        <div class="list">
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
+          <div class="listItem">
+            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
+            <span>充值特惠</span>
+          </div>
         </div>
       </div>
      </div>
@@ -96,12 +98,13 @@ export default {
 .classifyBody
   display flex
   overflow hidden
+  margin-top 20px
   .classifyBodyL
+    height calc(100vh - 280px)
     width 170px
     border-right 2px solid #eee
-    height calc(100vh - 134px)
-    margin 30px 0
-    ul 
+    .leftList 
+      clear both
       li
         height 50px
         line-height 50px
@@ -109,21 +112,26 @@ export default {
         text-align left
         padding-left 40px
         font-size 28px
+        width 170px
         &.active
           border-left 2px solid red 
   .classifyBodyR
     padding 20px
+    height calc(100vh - 280px)
     img 
       width 528px
       height 192px
-    .list
-      // display flex
-      .listItem
-        text-align center
-        width 144px
-        height 216px
-        img 
+    .inner
+      .list
+        // display flex
+        .listItem
+          text-align center
           width 144px
-          height 144px
+          height 216px
+          margin-right 35px
+          float left
+          img 
+            width 144px
+            height 144px
 
 </style>
