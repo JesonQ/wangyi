@@ -36,6 +36,7 @@ export default {
         width 100px
         height 100%
         color #666
+        margin-left 10px
       .headerNavc
         width 100%
         text-align center

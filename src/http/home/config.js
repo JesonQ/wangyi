@@ -10,8 +10,12 @@ export default {
         method:"get",
       },
       getCateList:{
-        url:baseUrl + "/getCateList",  
+        url:baseUrl + "/cateNavDatas",  
         method:"get",
-      }
+      },
+      // getBuyList:{
+      //   url:"https://m.you.163.com/topic/v1/know/navWap.json",
+      //   method:"get"
+      // }
   }
 }

@@ -72,6 +72,11 @@ import BScroll from 'better-scroll'
 
 export default {
   name:"classifyBody",
+  data() {
+    return {
+      getCateList:[]
+    }
+  },
   methods:{
     classLScroll(){
       //左侧
@@ -86,10 +91,15 @@ export default {
         click: true,
         useTransition:false        
       })
+    },
+    async getCateListMeth(){
+      let getCateListData = await this.$http.home.getCateList()
+      console.log(getCateListData)
     }
   },
   mounted(){
-    this.classLScroll()
+    this.classLScroll()  //纵向滚动
+    this.getCateListMeth()   // 获取左侧数据
   },  
 }
 </script>

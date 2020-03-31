@@ -31,7 +31,7 @@ export default {
       display flex
       align-items center
       text-align center
-      justify-content space-around
+      justify-content space-between
       padding 0 20px
       background #fff
       .headerNavL
@@ -39,6 +39,7 @@ export default {
         width 100px
         height 100%
         color #666
+        margin-left 10px
       .headerNavc
         width 200px
         height 60px
@@ -48,6 +49,7 @@ export default {
       .headerNavr
         display flex
         color #666
+        margin-left 20px
         .search
           margin-right 40px  
 </style>

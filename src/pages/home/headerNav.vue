@@ -54,7 +54,7 @@ export default {
     display flex
     align-items center
     white-space nowrap
-    width 1000px
+    width 2000px
     .navScrollItem
       display inline-block
       margin 0 20px

@@ -1,19 +1,22 @@
 <template>
   <div>
     <v-userHeader></v-userHeader>
-    <v-Footer></v-Footer>
+    <v-loginpage></v-loginpage>
+    <v-loginShare></v-loginShare>
   </div>
 </template>
 
 <script>
 import userHeader from "./userHeader.vue"
-import Footer from "components/indexFooter/indexFooter"
+import loginpage from "./loginpage.vue"
+import loginShare from "./loginShare.vue"
 
 export default {
   name:"users",
   components:{
     "v-userHeader":userHeader,
-    "v-Footer":Footer,
+    "v-loginpage":loginpage,
+    "v-loginShare":loginShare,
   }
 }
 </script>
