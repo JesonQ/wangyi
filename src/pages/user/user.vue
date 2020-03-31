@@ -1,16 +1,19 @@
 <template>
   <div>
-    user
+    <v-userHeader></v-userHeader>
     <v-Footer></v-Footer>
   </div>
 </template>
 
 <script>
+import userHeader from "./userHeader.vue"
 import Footer from "components/indexFooter/indexFooter"
+
 export default {
-  name:"user",
+  name:"users",
   components:{
-    "v-Footer":Footer
+    "v-userHeader":userHeader,
+    "v-Footer":Footer,
   }
 }
 </script>

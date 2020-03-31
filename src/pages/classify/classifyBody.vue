@@ -118,12 +118,13 @@ export default {
   .classifyBodyR
     padding 20px
     height calc(100vh - 280px)
-    img 
-      width 528px
-      height 192px
     .inner
+      height 3000px
+      img 
+        width 528px
+        height 192px
       .list
-        // display flex
+        height 100%
         .listItem
           text-align center
           width 144px
