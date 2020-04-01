@@ -1,14 +1,16 @@
 <template>
   <div class="classifyBody">
      <div class="classifyBodyL">
-       <ul class="leftList">
-         <li 
+       <van-sidebar class="leftList"  v-model="activeKey" v-if="getCateList">
+         <van-sidebar-item 
           
+          class="listItemLeft"
           v-for="(getCateItem,index) in getCateList"
           :key="index"
-          @click="sendId(getCateItem.id)"
-         >{{getCateItem.name}}</li>
-       </ul>
+          @click.native="sendId(getCateItem.id)"
+          :title="getCateItem.name"
+         >{{getCateItem.name}}</van-sidebar-item>
+       </van-sidebar>
      </div>
      <div class="classifyBodyR">
       <div 
@@ -18,7 +20,7 @@
         <img :src="getCateListR.imgUrl">
         <div class="list">
           <div 
-          class="listItem" v-for="(item,index) in getCateListR.subCateList"
+          class="listItemRight" v-for="(item,index) in getCateListR.subCateList"
           :key="index"
           >
             <img :src="item.wapBannerUrl" alt="">
@@ -32,7 +34,12 @@
 
 <script>
 import BScroll from 'better-scroll'
+//右侧点击高亮效果
+import Vue from 'vue';
+import { Sidebar, SidebarItem } from 'vant';
 
+Vue.use(Sidebar);
+Vue.use(SidebarItem);
 export default {
   name:"classifyBody",
   data() {
@@ -40,6 +47,7 @@ export default {
       getCateList:[], //所有数据
       getCateListR:[], //右侧数据
       navId: 0,
+      activeKey: 0, //高亮
     }
   },
   methods:{
@@ -59,10 +67,14 @@ export default {
       let getCateListData = await this.$http.home.getCateList()
       console.log(getCateListData)
       this.getCateList = getCateListData
+      // 左侧默认刷新 触发一个点击事件
+      this.navId = this.getCateList[0].id
+      console.log(this.navId)
     },
     //左侧向右侧传输id
     sendId(id){
-      // console.log(id)
+      console.log(id)
+      console.log(this.getCateList)
       let rightData = this.getCateList && this.getCateList.find((item)=>{
         if(item.id === id){
           return item
@@ -71,7 +83,7 @@ export default {
       // 右侧数据
       this.getCateListR = []
       this.getCateListR = rightData
-      //
+
     }
   },
   mounted(){
@@ -80,7 +92,7 @@ export default {
       this.getCateListMeth()   // 获取左侧数据
       this.sendId()            // 初始化id    
     })
-  },  
+  }
 }
 </script>
 
@@ -95,17 +107,14 @@ export default {
     border-right 2px solid #eee
     .leftList 
       clear both
-      li
-        height 50px
-        line-height 50px
+      width 170px
+      .listItemLeft
         clear both
         margin 20px 0
         text-align left
         padding-left 40px
-        font-size 28px
-        width 170px
-        &.active
-          border-left 2px solid red 
+        font-size 12px
+        width 170px 
   .classifyBodyR
     padding 20px
     height calc(100vh - 280px)
@@ -117,7 +126,7 @@ export default {
         margin-bottom 20px
       .list
         height 100%
-        .listItem
+        .listItemRight
           text-align center
           width 144px
           height 216px
