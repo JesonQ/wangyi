@@ -9,100 +9,20 @@
         </div>
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
+            <div 
+              class="swiper-slide" 
+              v-for="(bues,index) in buyNav"
+              :key="index"
+            >
+              <div class="top" v-for="(item,index) in bues" :key="index">
+                <img :src="bues.picUrl" alt="">
+                <p class="Tbook">{{bues.mainTitle}}</p>
+                <p class="Tphone">{{bues.viceTitle}}</p>
               </div>
               <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
-              </div>
-              <div class="bottom top">
-                <img src="https://yanxuan.nosdn.127.net/8a7216b5820d09e04129ef6b59ad6eb9.png?imageView&quality=65&thumbnail=120x120" alt="">
-                <p class="Tbook">防疫手册</p>
-                <p class="Tphone">时尚手机推荐</p>
+                <img :src="bues.picUrl" alt="">
+                <p class="Tbook">{{bues.mainTitle}}</p>
+                <p class="Tphone">{{bues.viceTitle}}</p>
               </div>
             </div>
           </div>
@@ -146,7 +66,8 @@ export default {
   name:"headerBuy",
   data() {
     return {
-      buyList:[]
+      buyNav:[],
+      buyList:[],
     }
   },
   methods:{
@@ -162,15 +83,22 @@ export default {
         slidesPerView:4,
       })
     },
+    async getBuyNav(){
+      let getBuyNavData = await this.$http.home.getBuyNav()
+      console.log(getBuyNavData)
+      this.buyNav = getBuyNavData.data.navList
+    },
     async getBuyList(){
-      let getBuyListData = await axios.get("https://m.you.163.com/topic/v1/know/navWap.json")
-      console.log(getBuyListData)
+      let getBuyListData = await this.$http.home.getBuyList()
+      // console.log(getBuyListData)
+      this.buyList = getBuyListData
     }
   },
   mounted(){
     this.swiperPlay()
     this.buyScroll()
-    this.getBuyList()  //获取轮播图信息
+    this.getBuyNav()  //获取轮播图信息
+    this.getBuyList()  //获取瀑布流信息
   },
   components:{
     "v-buyHeader":buyHeader

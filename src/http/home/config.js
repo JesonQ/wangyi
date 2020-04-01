@@ -17,8 +17,13 @@ export default {
         method:"get",
         corsUrl:'/3000'
       },
+      getBuyNav:{
+        url:"/topic/v1/know/navWap.json",
+        method:"get",
+        corsUrl:'/api'
+      },
       getBuyList:{
-        url:wangyUrl + "/topic/v1/know/navWap.json",
+        url:"/topic/v1/find/recManual.json",
         method:"get",
         corsUrl:'/api'
       }

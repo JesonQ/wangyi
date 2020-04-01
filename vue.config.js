@@ -18,27 +18,26 @@ module.exports={
               changeOrigin: true, //允许跨域
               pathRewrite: {
                 '^/3000': ''
-          },
-          proxy: {
-            '/api': {
-              target: 'https://m.you.163.com', //对应自己的接口
-              changeOrigin: true,
-              ws: true,
-              pathRewrite: {
-                '^/api': ''
+              }
+            },
+              '/api': {
+                target: 'https://m.you.163.com', //对应自己的接口
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                  '^/api': ''
+                }
               }
             }
-          }
-        }
-    },
-    css: {
-      loaderOptions: {
-        postcss: {
-          plugins: [
-            postcss
-          ]
-        }
-      }
+        },
+        css: {
+          loaderOptions: {
+            postcss: {
+              plugins: [
+                postcss
+              ]
+            }
+         }
     },
     configureWebpack:{
         resolve: {

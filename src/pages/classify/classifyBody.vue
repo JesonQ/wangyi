@@ -39,6 +39,7 @@ export default {
     return {
       getCateList:[], //所有数据
       getCateListR:[], //右侧数据
+      navId: 0,
     }
   },
   methods:{
@@ -62,8 +63,8 @@ export default {
       this.getCateList = getCateListData
     },
     //左侧向右侧传输id
-    sendId(id=1005000){
-      console.log(id)
+    sendId(id){
+      // console.log(id)
       let rightData = this.getCateList && this.getCateList.find((item)=>{
         if(item.id === id){
           return item

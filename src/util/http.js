@@ -11,11 +11,11 @@ export default (axios,config={})=>{
 
     HttpUtil[name] = async (data={})=>{
       if(!(data instanceof Object)) throw new Error("请求数据必须是一个对象") 
-      // if(corsUrl){
-      //   url = corsUrl + url 
-      //   console.log(url)
-      //   corsUrl = '' 
-      // }
+      if(corsUrl){
+        url = corsUrl + url 
+        // console.log(url)
+        corsUrl = '' 
+      }
       let body  = ""
       switch (method.toLowerCase()) {
         case 'get':
