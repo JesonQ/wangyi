@@ -163,7 +163,7 @@ export default {
       })
     },
     async getBuyList(){
-      let getBuyListData = await this.$http.home.getBuyList()
+      let getBuyListData = await axios.get("https://m.you.163.com/topic/v1/know/navWap.json")
       console.log(getBuyListData)
     }
   },

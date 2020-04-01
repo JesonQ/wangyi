@@ -2,64 +2,27 @@
   <div class="classifyBody">
      <div class="classifyBodyL">
        <ul class="leftList">
-         <li class="active">411专区</li>
-         <li>猫人户</li>
-         <li>京SDK</li>
-         <li>就度搜</li>
-         <li>少客服</li>
-         <li>回答</li>
-         <li>挖到回家</li>
-         <li>美大客车</li>
-         <li>如日</li>
-         <li>新农村</li>
-         <li>谁佛</li>
-         <li>仓库大着</li>
-         <li>内容</li>
-         <li>回答</li>
-         <li>挖到回家</li>
-         <li>美大客车</li>
-         <li>如日</li>
-         <li>新农村</li>
-         <li>谁佛</li>
-         <li>仓库大着</li>
-         <li>内容</li>
+         <li 
+          class="active"
+          v-for="(getCateItem,index) in getCateList"
+          :key="index"
+          @click="sendId(getCateItem.id)"
+         >{{getCateItem.name}}</li>
        </ul>
      </div>
      <div class="classifyBodyR">
-      <div class="inner">
-        <img src="https://yanxuan.nosdn.127.net/9f4bcf0d57149499584d59478a606e9e.jpg">
+      <div 
+      class="inner" 
+      v-if="getCateListR"
+      >
+        <img :src="getCateListR.imgUrl">
         <div class="list">
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
-          </div>
-          <div class="listItem">
-            <img src="https://yanxuan.nosdn.127.net/d561c1c3c927137fe7d5b1447a7354a3.png" alt="">
-            <span>充值特惠</span>
+          <div 
+          class="listItem" v-for="(item,index) in getCateListR.subCateList"
+          :key="index"
+          >
+            <img :src="item.wapBannerUrl" alt="">
+            <span>{{item.name}}</span>
           </div>
         </div>
       </div>
@@ -74,7 +37,8 @@ export default {
   name:"classifyBody",
   data() {
     return {
-      getCateList:[]
+      getCateList:[], //所有数据
+      getCateListR:[], //右侧数据
     }
   },
   methods:{
@@ -95,11 +59,25 @@ export default {
     async getCateListMeth(){
       let getCateListData = await this.$http.home.getCateList()
       console.log(getCateListData)
+      this.getCateList = getCateListData
+    },
+    //左侧向右侧传输id
+    sendId(id=1005000){
+      console.log(id)
+      let rightData = this.getCateList && this.getCateList.find((item)=>{
+        if(item.id === id){
+          return item
+        }
+      })
+      // 右侧数据
+      this.getCateListR = []
+      this.getCateListR = rightData
     }
   },
   mounted(){
-    this.classLScroll()  //纵向滚动
-    this.getCateListMeth()   // 获取左侧数据
+      this.classLScroll()      //纵向滚动
+      this.getCateListMeth()   // 获取左侧数据
+      this.sendId(1005000)            // 初始化id
   },  
 }
 </script>
@@ -118,6 +96,7 @@ export default {
       li
         height 50px
         line-height 50px
+        clear both
         margin 20px 0
         text-align left
         padding-left 40px
@@ -129,10 +108,11 @@ export default {
     padding 20px
     height calc(100vh - 280px)
     .inner
-      height 3000px
+      // height 3000px
       img 
         width 528px
         height 192px
+        margin-bottom 20px
       .list
         height 100%
         .listItem

@@ -1,27 +1,36 @@
 <template>
   <div class="headerNav">
-      <div class="nav-scroll">
-        <span 
-          v-for="(CategoryItem,index) in CategoryList" 
-          class="navScrollItem"        
-          :key="index"
-        >{{CategoryItem.name}}</span>
+      <div class="navleft">
+        <div class="nav-scroll">
+          <span 
+            v-for="(CategoryItem,index) in CategoryList" 
+            class="navScrollItem"        
+            :key="index"
+            @click="indexActive(index)"
+          >{{CategoryItem.name}}</span>
+        </div>
       </div>
+      <div 
+        class="toggle iconfont icon-jiantouxiangxia"
+        @click="toggle"
+      ></div>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+
 export default {
   name:"headerNav",
   data() {
     return {
-      CategoryList:[]
+      CategoryList:[],
+      up:true
     }
   },
   methods:{
     headerScroll(){
-      let scroll = new BScroll('.headerNav',{
+      let scroll = new BScroll('.navleft',{
           scrollX: true,
           click: true
         })
@@ -30,6 +39,14 @@ export default {
       let getCategoryDatas = await this.$http.home.getCategoryDatas()
       // console.log(getCategoryDatas)
       this.CategoryList = getCategoryDatas
+    },
+    // home toggle
+    toggle(){
+      this.up = !this.up
+    },
+    // home scrollX 点击高亮
+    indexActive(index){
+      
     }
   },
   mounted(){
@@ -49,6 +66,7 @@ export default {
   padding 0 20px
   overflow hidden
   box-sizing border-box
+  position relative
   .nav-scroll
     height 60px
     display flex
@@ -62,4 +80,14 @@ export default {
       &.active
         border-bottom 1px solid red
         color red
+  .toggle
+    width 100px
+    height 60px
+    background-color #fff
+    position absolute
+    right 0
+    top 0
+    z-index 99
+    text-align center
+    line-height 60px
 </style>

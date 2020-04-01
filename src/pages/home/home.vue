@@ -36,6 +36,7 @@ import indexFooter from "./indexFooter"
 import Footer from "components/indexFooter/indexFooter"
 // 主页滚动
 import BScroll from 'better-scroll'
+
 export default {
   name:"home",
   methods:{

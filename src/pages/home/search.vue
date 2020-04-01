@@ -7,13 +7,18 @@
         <input type="text" placeholder="搜索商品,共23423款好物">
         <i></i>
       </form>
-      <button class="loginBtn">登录</button>
+      <button class="loginBtn" @click="goto(`/user`)">登录</button>
   </div>
 </template>
 
 <script>
 export default {
-  name:"search"
+  name:"search",
+  methods:{
+    goto(path){
+      this.$router.replace(path)
+    }
+  }
 }
 </script>
 

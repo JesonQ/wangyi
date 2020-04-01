@@ -1,21 +1,26 @@
 const baseUrl = "http://localhost:3000"
+const wangyUrl = "https://m.you.163.com"
 export default {
   api:{
       getIndex:{
-          url:baseUrl + "/getIndex",  //获取home主页数据
+          url:baseUrl +"/getIndex",  //获取home主页数据
           method:"get",
+          corsUrl:'/3000'
       },
       getCategoryDatas:{           //获取home headerNav 数据
-        url:baseUrl + "/getCategoryDatas",  
+        url:baseUrl +"/getCategoryDatas",  
         method:"get",
+        corsUrl:'/3000'
       },
       getCateList:{
-        url:baseUrl + "/cateNavDatas",  
+        url:baseUrl +"/getCategoryDatas",  
         method:"get",
+        corsUrl:'/3000'
       },
-      // getBuyList:{
-      //   url:"https://m.you.163.com/topic/v1/know/navWap.json",
-      //   method:"get"
-      // }
+      getBuyList:{
+        url:wangyUrl + "/topic/v1/know/navWap.json",
+        method:"get",
+        corsUrl:'/api'
+      }
   }
 }

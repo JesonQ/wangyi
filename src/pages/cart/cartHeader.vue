@@ -21,13 +21,18 @@
       </div>
     </div>
     <div class="cartBg"></div>
-    <button class="login">登录</button>
+    <button class="login" @click="goto(`/user`)">登录</button>
   </div>
 </template>
 
 <script>
 export default {
-  name:"cartHeader"
+  name:"cartHeader",
+  methods:{
+    goto(path){
+      this.$router.push(path)
+    }
+  }
 }
 </script>
 

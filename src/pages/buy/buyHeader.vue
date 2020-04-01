@@ -1,7 +1,7 @@
 <template>
     <div class="headerNav">
       <div class="headerNavL">
-        <a href="">
+        <a href="" @click="goto(`/home`)">
           <i class="iconfont icon-shouye" style="font-size:25px"></i>
         </a>
       </div>
@@ -11,7 +11,7 @@
           <i class="iconfont icon-search" style="font-size:25px"></i>
         </div>
         <div class="cart">
-          <i class="iconfont icon-gouwuche" style="font-size:25px"></i>
+          <i class="iconfont icon-gouwuche" style="font-size:25px" @click="goto(`/cart`)"></i>
         </div>
       </div>
     </div>
@@ -19,7 +19,12 @@
 
 <script>
 export default {
-  name:"buyHeader"
+  name:"buyHeader",
+  methods:{
+    goto(path){
+      this.$router.replace(path)
+    }
+  }
 }
 </script>
 
