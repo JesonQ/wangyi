@@ -10,7 +10,7 @@
       </div>
       <div class="headerNavr">
         <div class="search">
-          <i class="iconfont icon-search" style="font-size:25px"></i>
+          <i class="iconfont icon-search" style="font-size:25px"   @click="goto(`/maskSearch`)"></i>
         </div>
         <div class="cart">
           <i class="iconfont icon-gouwuche" style="font-size:25px" @click="goto(`/cart`)"></i>
@@ -24,7 +24,7 @@ export default {
   name:"buyHeader",
   methods:{
     goto(path){
-      this.$router.replace(path)
+      this.$router.push(path)
     }
   }
 }

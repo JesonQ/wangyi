@@ -3,7 +3,7 @@
      <div class="classifyBodyL">
        <ul class="leftList">
          <li 
-          class="active"
+          
           v-for="(getCateItem,index) in getCateList"
           :key="index"
           @click="sendId(getCateItem.id)"
@@ -48,13 +48,11 @@ export default {
       new BScroll('.classifyBodyL',{
         scrollY: true,
         click: true,
-        useTransition:false        
       })
       //右侧
       new BScroll('.classifyBodyR',{
         scrollY: true,
         click: true,
-        useTransition:false        
       })
     },
     async getCateListMeth(){
@@ -73,12 +71,15 @@ export default {
       // 右侧数据
       this.getCateListR = []
       this.getCateListR = rightData
+      //
     }
   },
   mounted(){
+    this.$nextTick(function() {
       this.classLScroll()      //纵向滚动
       this.getCateListMeth()   // 获取左侧数据
-      this.sendId(1005000)            // 初始化id
+      this.sendId()            // 初始化id    
+    })
   },  
 }
 </script>
@@ -109,7 +110,7 @@ export default {
     padding 20px
     height calc(100vh - 280px)
     .inner
-      // height 3000px
+      overflow hidden
       img 
         width 528px
         height 192px
@@ -120,10 +121,14 @@ export default {
           text-align center
           width 144px
           height 216px
-          margin-right 35px
+          padding 15px
           float left
           img 
             width 144px
             height 144px
+          span 
+            height 30px
+            display inline-block
+            line-height 30px
 
 </style>

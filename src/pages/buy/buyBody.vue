@@ -8,24 +8,15 @@
           <div class="u-text">严选好物&nbsp;用心生活</div>
         </div>
         <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <div 
-              class="swiper-slide" 
-              v-for="(bues,index) in buyNav"
-              :key="index"
-            >
-              <div class="top" v-for="(item,index) in bues" :key="index">
-                <img :src="bues.picUrl" alt="">
-                <p class="Tbook">{{bues.mainTitle}}</p>
-                <p class="Tphone">{{bues.viceTitle}}</p>
+          <div class="swiper-wrapper" v-if="buyNav">
+            <div class="swiper-slide" v-for="item in buyNav" :key="item.id">
+              <div class="top">
+                <img :src="item.picUrl" alt="">
+                <p class="Tbook">{{item.mainTitle}}</p>
+                <p class="Tphone">{{item.viceTitle}}</p>
               </div>
-              <div class="bottom top">
-                <img :src="bues.picUrl" alt="">
-                <p class="Tbook">{{bues.mainTitle}}</p>
-                <p class="Tphone">{{bues.viceTitle}}</p>
-              </div>
-            </div>
-          </div>
+            </div>            
+          </div>                
         </div>                                     
         <div class="buy-looks">
           <div class="buyLeft">
@@ -51,7 +42,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -68,6 +58,7 @@ export default {
     return {
       buyNav:[],
       buyList:[],
+      test:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
     }
   },
   methods:{
@@ -80,7 +71,10 @@ export default {
     swiperPlay(){
       var mySwiper = new Swiper('.swiper-container', {
         autoplay: 5000,//可选选项，自动滑动
-        slidesPerView:4,
+        slidesPerView:4,  //每页显示张数
+        // slidesPerColumnFill:"column",
+        slidesPerColumn:2,
+        // centeredSlidesBounds:true
       })
     },
     async getBuyNav(){
@@ -91,7 +85,7 @@ export default {
     async getBuyList(){
       let getBuyListData = await this.$http.home.getBuyList()
       // console.log(getBuyListData)
-      this.buyList = getBuyListData
+      this.buyList = getBuyListData   
     }
   },
   mounted(){
@@ -150,16 +144,17 @@ export default {
           border-radius 30px
           margin-bottom 30px
           .swiper-slide
-            width 100%
-            height 100%
+            width 170px !important
+            height 220px  !important
             .top
-              width 100%
-              height 260px
+              width 170px
+              height 200px
               text-align center
               color #666
+              // margin-top 20px
               img 
-                width 132px
-                height 132px
+                width 120px
+                height 120px
                 margin-top 15px
               .Tbook
                 font-size 30px

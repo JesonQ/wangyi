@@ -4,16 +4,18 @@
     <v-headerNav></v-headerNav>
     <div class="indexScrollWrap">
       <div class="indexScrollInner">
-        <v-swiper></v-swiper>
-        <v-grow></v-grow>
-        <v-kingKongModule></v-kingKongModule>
-        <v-indexBigPromotionModule></v-indexBigPromotionModule>
-        <v-newShare></v-newShare>
-        <v-hotsell></v-hotsell>
-        <v-limitBuy></v-limitBuy>
-        <v-newProduct></v-newProduct>
-        <v-sellershop></v-sellershop>
-        <v-indexFooter></v-indexFooter>
+        <lazy-component>
+          <v-swiper></v-swiper>
+          <v-grow></v-grow>
+          <v-kingKongModule></v-kingKongModule>
+          <v-indexBigPromotionModule></v-indexBigPromotionModule>
+          <v-newShare></v-newShare>
+          <v-hotsell></v-hotsell>
+          <v-limitBuy></v-limitBuy>
+          <v-newProduct></v-newProduct>
+          <v-sellershop></v-sellershop>
+          <v-indexFooter></v-indexFooter>
+        </lazy-component>
       </div>
     </div>
     <v-Footer></v-Footer>
@@ -36,7 +38,13 @@ import indexFooter from "./indexFooter"
 import Footer from "components/indexFooter/indexFooter"
 // 主页滚动
 import BScroll from 'better-scroll'
+// lazyload
+import Vue from 'vue';
+import { Lazyload } from 'vant';
 
+Vue.use(Lazyload,{
+  lazyComponent: true
+})
 export default {
   name:"home",
   methods:{

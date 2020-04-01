@@ -1,7 +1,7 @@
 <template>
   <div class="search">
       <form action="">
-        <input type="text" placeholder="搜索商品,共34534件好物">
+        <input type="text" placeholder="搜索商品,共34534件好物" @click="goto('/maskSearch')">
         <i></i>
       </form>
   </div>
@@ -9,7 +9,12 @@
 
 <script>
 export default {
-  name:"search"
+  name:"search",
+  methods:{
+    goto(path){
+      this.$router.push(path)
+    }
+  }
 }
 </script>
 

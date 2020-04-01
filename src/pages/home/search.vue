@@ -4,7 +4,7 @@
         <img src="https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png?imageView&type=webp" alt="">
       </h1>
       <form action="" class="homeF">
-        <input type="text" placeholder="搜索商品,共23423款好物">
+        <input type="text" placeholder="搜索商品,共23423款好物" @click="goto('/maskSearch')">
         <i></i>
       </form>
       <button class="loginBtn" @click="goto(`/user`)">登录</button>
@@ -12,11 +12,23 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import { Popup } from 'vant';
+
+Vue.use(Popup);
 export default {
   name:"search",
+  data() {
+    return {
+      show: false
+    }
+  },
   methods:{
     goto(path){
-      this.$router.replace(path)
+      this.$router.push(path)
+    },
+    showPopup(){
+      this.show = true
     }
   }
 }
