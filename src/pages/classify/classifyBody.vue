@@ -14,7 +14,8 @@
      </div>
      <div class="classifyBodyR">
       <div 
-        class="inner" 
+      class="inner" 
+      v-if="getCateListR"
       >
         <img :src="getCateListR.imgUrl">
         <div class="list">
@@ -44,10 +45,13 @@ export default {
   data() {
     return {
       getCateList:[], //所有数据
-      getCateListR:[], //右侧数据
+      getCateListR:{}, //右侧数据
       navId: 0,
       activeKey: 0, //高亮
     }
+  },
+  created(){
+
   },
   methods:{
     classLScroll(){
@@ -55,35 +59,28 @@ export default {
       new BScroll('.classifyBodyL',{
         scrollY: true,
         click: true,
-        mouseWheel: {
-          speed: 20,
-          invert: false,
-          easeTime: 300
-          }
       })
       //右侧
       new BScroll('.classifyBodyR',{
         scrollY: true,
         click: true,
-        mouseWheel: {
-          speed: 20,
-          invert: false,
-          easeTime: 300
-          }
       })
     },
     async getCateListMeth(){
       let getCateListData = await this.$http.home.getCateList()
-      console.log(getCateListData)
+      // console.log(getCateListData)
       this.getCateList = getCateListData
+      this.getCateListR = getCateListData[0]
+
+      console.log(getCateListData);
+      
       // 左侧默认刷新 触发一个点击事件
       // this.navId = this.getCateList[0].id
       // console.log(this.navId)
+      
     },
     //左侧向右侧传输id
     sendId(id){
-      console.log(id)
-      console.log(this.getCateList)
       let rightData = this.getCateList && this.getCateList.find((item)=>{
         if(item.id === id){
           return item
@@ -94,23 +91,18 @@ export default {
       this.getCateListR = rightData
 
     }
+    
   },
+  
   mounted(){
-    this.$nextTick(async function() {
+    this.$nextTick(()=> {
       this.classLScroll()      //纵向滚动
-      await this.getCateListMeth()   // 获取左侧数据
-                  // 初始化id    
+      this.getCateListMeth()   // 获取左侧数据
+      // this.sendId()   
+               // 初始化id    
     })
   },
-  beforeEnter: (to, from, next) => {
-      
-      if(this.navId && this.navId !== 0){
-
-          next()
-      }else{
-          next()
-      }
-  }
+ 
 }
 </script>
 

@@ -6,7 +6,7 @@
             v-for="(CategoryItem,index) in CategoryList" 
             class="navScrollItem"        
             :key="index"
-            to="home/"
+            :to="`home/${CategoryItem.id}`"
           >{{CategoryItem.name}}</router-link>>
         </div>
       </div>
