@@ -50,20 +50,27 @@ export default {
       activeKey: 0, //高亮
     }
   },
-  created(){
-
-  },
   methods:{
     classLScroll(){
       //左侧
       new BScroll('.classifyBodyL',{
         scrollY: true,
         click: true,
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+          }
       })
       //右侧
       new BScroll('.classifyBodyR',{
         scrollY: true,
         click: true,
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+          }
       })
     },
     async getCateListMeth(){
@@ -87,6 +94,7 @@ export default {
         }
       })
       // 右侧数据
+      this.navId = id
       this.getCateListR = []
       this.getCateListR = rightData
 

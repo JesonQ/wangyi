@@ -1,6 +1,6 @@
 // const baseUrl = "http://localhost:3000"
 // const baseUrl = "192.168.0.101"
-const wangyUrl = "https://m.you.163.com"
+// const wangyUrl = "https://m.you.163.com"
 export default {
   api:{
       getIndex:{
