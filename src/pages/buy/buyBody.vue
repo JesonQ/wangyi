@@ -17,30 +17,30 @@
           </div>  
           <div class="swiper-pagination"></div>              
         </div>                                     
-        <div class="buy-looks">
+        <div class="buy-looks" v-if="buyList[0]">
           <div class="buyLeft">
-            <div class="looksItem">
-              <img src="https://yanxuan.nosdn.127.net/17b1f75f167c06763a550486f197d852.jpg?imageView&thumbnail=345y345&quality=95" alt="">
-              <span>周年品牌价值</span>
+            <div class="looksItem"  v-for="(buyItem,index) in buyList[0].topics">
+              <img :src="buyItem.picUrl" alt="">
+              <span>{{buyItem.title}}</span>
               <div  class="m-userInfo">
-                <img src="http://yanxuan.nosdn.127.net/3769578a6595d8e3c61d1186123141e0.png?imageView&quality=65&thumbnail=48y48" alt="">
-                <div class="m-userName">好物大赏</div>
-                <div class="m-upText">82K</div>
+                <img :src="buyItem.avatar" alt="">
+                <div class="m-userName">{{buyItem.nickname}}</div>
+                <div class="m-upText">{{buyItem.readCount}}</div>
               </div>
             </div>
           </div>
           <div class="buyRight buyLeft">
-            <div class="looksItem">
-              <img src="https://yanxuan.nosdn.127.net/17b1f75f167c06763a550486f197d852.jpg?imageView&thumbnail=345y345&quality=95" alt="">
-              <span>周年品牌价值</span>
-              <div  class="m-userInfo">
-                <img src="http://yanxuan.nosdn.127.net/3769578a6595d8e3c61d1186123141e0.png?imageView&quality=65&thumbnail=48y48" alt="">
-                <div class="m-userName">好物大赏</div>
-                <div class="m-upText">82K</div>
+              <div class="looksItem" v-for="(buyItem,index) in buyList[1].topics">
+                <img :src="buyItem.picUrl" alt="">
+                <span>{{buyItem.title}}</span>
+                <div  class="m-userInfo">
+                  <img :src="buyItem.avatar" alt="">
+                  <div class="m-userName">{{buyItem.nickname}}</div>
+                  <div class="m-upText">{{buyItem.readCount}}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -57,7 +57,6 @@ export default {
     return {
       buyNav:[],
       buyList:[],
-      test:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
     }
   },
   methods:{
@@ -74,13 +73,16 @@ export default {
     },
     async getBuyNav(){
       let getBuyNavData = await this.$http.home.getBuyNav()
-      console.log(getBuyNavData)
+      // console.log(getBuyNavData)
       this.buyNav = getBuyNavData.data.navList
     },
     async getBuyList(){
-      let getBuyListData = await this.$http.home.getBuyList()
-      // console.log(getBuyListData)
-      this.buyList = getBuyListData   
+      let getBuyListData = await this.$http.home.getBuyList({page:5,size:1})
+      if(getBuyListData.code === "200"){
+        console.log(getBuyListData.data.result)
+        this.buyList = getBuyListData.data.result
+      }
+         
     },
     swiperPlay(){
       var mySwiper = new Swiper('.swiper-container', {
@@ -97,7 +99,6 @@ export default {
       await this.getBuyList()  //获取瀑布流信息
       this.swiperPlay()
       this.buyScroll()
-
     })
   },
   components:{
@@ -114,11 +115,11 @@ export default {
     box-sizing border-box
     background #eee
     .header-bottomScroll
-      height calc(100vh - 120px)
+      height calc(100vh - 200px)
       overflow hidden
+      box-sizing border-box
       .header-swiper
         width 100%
-        height 10000px
         box-sizing border-box
         background-image url("https://m.you.163.com/topic/index/img/topic_title_bg.2373a140.png")
         background-size 100% 500px
@@ -170,17 +171,22 @@ export default {
         .buy-looks
           padding  0 20px 
           display flex
+          flex-direction row
           .buyLeft
-            width 380px
-            height 1000px
+            height 100%
+            width 350px
             margin-right 20px
+            display flex
+            flex-direction column
             .looksItem
               background #fff
-              padding-bottom 20px
+              padding 13px
               border-radius 20px
               margin-bottom 20px
+              box-sizing border-box
               img 
                 width 100%
+                height 100%
                 border-radius 15px
               span
                 font-size 30px
@@ -195,6 +201,6 @@ export default {
                   border-radius 50%
                   margin 0 20px
                 .m-userName
-                  margin 0 30px
+                  margin 0 10px
 
  </style>

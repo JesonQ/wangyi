@@ -16,12 +16,14 @@ export default (axios,config={})=>{
         // console.log(url)
         corsUrl = '' 
       }
+      // const {pages,}
       let body  = ""
       switch (method.toLowerCase()) {
         case 'get':
           body = await axios({
             url,
-            method
+            method,
+            data
           })
           break;
         case 'delete':

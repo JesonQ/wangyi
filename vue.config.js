@@ -10,7 +10,7 @@ const postcss = px2rem({
 module.exports={
     lintOnSave:false,
     devServer:{
-        port:3000,
+        port:3004,
         open:true,
         proxy:{   //跨域配置
           '/3000': {
