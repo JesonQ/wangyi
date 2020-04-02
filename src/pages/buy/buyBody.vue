@@ -10,13 +10,12 @@
         <div class="swiper-container">
           <div class="swiper-wrapper" v-if="buyNav">
             <div class="swiper-slide" v-for="item in buyNav" :key="item.id">
-              <div class="top">
                 <img :src="item.picUrl" alt="">
                 <p class="Tbook">{{item.mainTitle}}</p>
                 <p class="Tphone">{{item.viceTitle}}</p>
-              </div>
             </div>            
-          </div>                
+          </div>  
+          <div class="swiper-pagination"></div>              
         </div>                                     
         <div class="buy-looks">
           <div class="buyLeft">
@@ -66,15 +65,11 @@ export default {
       new BScroll('.header-bottomScroll', {
         scrollY: true,
         click:true,
-      })
-    },
-    swiperPlay(){
-      var mySwiper = new Swiper('.swiper-container', {
-        autoplay: 5000,//可选选项，自动滑动
-        slidesPerView:4,  //每页显示张数
-        // slidesPerColumnFill:"column",
-        slidesPerColumn:2,
-        // centeredSlidesBounds:true
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+          }
       })
     },
     async getBuyNav(){
@@ -86,13 +81,24 @@ export default {
       let getBuyListData = await this.$http.home.getBuyList()
       // console.log(getBuyListData)
       this.buyList = getBuyListData   
+    },
+    swiperPlay(){
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,//可选选项，自动滑动
+        slidesPerView:4,  //每页显示张数
+        slidesPerColumn:2,   //几行
+        pagination:'.swiper-pagination',
+      })
     }
   },
   mounted(){
-    this.swiperPlay()
-    this.buyScroll()
-    this.getBuyNav()  //获取轮播图信息
-    this.getBuyList()  //获取瀑布流信息
+    this.$nextTick(async()=>{
+      await this.getBuyNav()  //获取轮播图信息
+      await this.getBuyList()  //获取瀑布流信息
+      this.swiperPlay()
+      this.buyScroll()
+
+    })
   },
   components:{
     "v-buyHeader":buyHeader
@@ -143,14 +149,14 @@ export default {
           background-color #fff
           border-radius 30px
           margin-bottom 30px
-          .swiper-slide
-            width 170px !important
-            height 220px  !important
-            .top
-              width 170px
-              height 200px
+          .swiper-wrapper
+            height 100%
+            .swiper-slide
+              width 180px
+              height 220px
               text-align center
               color #666
+              float left
               // margin-top 20px
               img 
                 width 120px

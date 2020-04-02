@@ -12,7 +12,7 @@
          >{{getCateItem.name}}</van-sidebar-item>
        </van-sidebar>
      </div>
-     <div class="classifyBodyR" v-if="navId && navId !==0">
+     <div class="classifyBodyR">
       <div 
         class="inner" 
       >
@@ -55,12 +55,21 @@ export default {
       new BScroll('.classifyBodyL',{
         scrollY: true,
         click: true,
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+          }
       })
       //右侧
       new BScroll('.classifyBodyR',{
         scrollY: true,
         click: true,
-        startY:0
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+          }
       })
     },
     async getCateListMeth(){
@@ -97,7 +106,7 @@ export default {
       
       if(this.navId && this.navId !== 0){
 
-          next('/Msite')
+          next()
       }else{
           next()
       }

@@ -10,6 +10,7 @@ export default [
   {
     path:"/classify",
     component:classify,
+    
   },
   {path:"/buy",component:buy},
   {path:"/cart",component:cart},

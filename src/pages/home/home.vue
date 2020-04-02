@@ -52,7 +52,11 @@ export default {
       let scroll = new BScroll('.indexScrollWrap',{
         scrollY: true,
         click: true,
-        useTransition:false        
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+          }        
       })
     }
   },
