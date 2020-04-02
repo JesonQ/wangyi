@@ -7,15 +7,15 @@ import maskSearch from "pages/maskSearch/maskSearch"
 
 export default [
   {
-    path:"/home/:id",
+    path:"/home",
     component:home,
-    props:true,
-        children:[
-            {path:"goods",component:goods},
-            {path:"ratings",component:ratings},
-            {path:"sellers",component:sellers},
-            {path:"",redirect:"goods"}
-        ]
+    // props:true,
+    //     children:[
+    //         {path:"/",component:goods},
+    //         {path:"ratings",component:ratings},
+    //         {path:"sellers",component:sellers},
+    //         {path:"",redirect:"goods"}
+    //     ]
   },
   {
     path:"/classify",
