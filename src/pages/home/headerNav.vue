@@ -2,12 +2,12 @@
   <div class="headerNav">
       <div class="navleft">
         <div class="nav-scroll">
-          <span 
+          <router-link 
             v-for="(CategoryItem,index) in CategoryList" 
             class="navScrollItem"        
             :key="index"
-            @click="indexActive(index)"
-          >{{CategoryItem.name}}</span>
+            to="home/"
+          >{{CategoryItem.name}}</router-link>>
         </div>
       </div>
       <div 
@@ -43,10 +43,6 @@ export default {
     // home toggle
     toggle(){
       this.up = !this.up
-    },
-    // home scrollX 点击高亮
-    indexActive(index){
-      
     }
   },
   mounted(){

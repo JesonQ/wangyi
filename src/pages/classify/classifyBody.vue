@@ -7,15 +7,14 @@
           class="listItemLeft"
           v-for="(getCateItem,index) in getCateList"
           :key="index"
-          @click.native="sendId(getCateItem.id)"
+          @click="sendId(getCateItem.id)"
           :title="getCateItem.name"
          >{{getCateItem.name}}</van-sidebar-item>
        </van-sidebar>
      </div>
-     <div class="classifyBodyR">
+     <div class="classifyBodyR" v-if="navId && navId !==0">
       <div 
-      class="inner" 
-      v-if="getCateListR"
+        class="inner" 
       >
         <img :src="getCateListR.imgUrl">
         <div class="list">
@@ -61,6 +60,7 @@ export default {
       new BScroll('.classifyBodyR',{
         scrollY: true,
         click: true,
+        startY:0
       })
     },
     async getCateListMeth(){
@@ -68,8 +68,8 @@ export default {
       console.log(getCateListData)
       this.getCateList = getCateListData
       // 左侧默认刷新 触发一个点击事件
-      this.navId = this.getCateList[0].id
-      console.log(this.navId)
+      // this.navId = this.getCateList[0].id
+      // console.log(this.navId)
     },
     //左侧向右侧传输id
     sendId(id){
@@ -87,11 +87,20 @@ export default {
     }
   },
   mounted(){
-    this.$nextTick(function() {
+    this.$nextTick(async function() {
       this.classLScroll()      //纵向滚动
-      this.getCateListMeth()   // 获取左侧数据
-      this.sendId()            // 初始化id    
+      await this.getCateListMeth()   // 获取左侧数据
+                  // 初始化id    
     })
+  },
+  beforeEnter: (to, from, next) => {
+      
+      if(this.navId && this.navId !== 0){
+
+          next('/Msite')
+      }else{
+          next()
+      }
   }
 }
 </script>
