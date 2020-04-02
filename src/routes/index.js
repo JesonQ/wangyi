@@ -6,7 +6,17 @@ import user from "pages/user/user"
 import maskSearch from "pages/maskSearch/maskSearch"
 
 export default [
-  {path:"/home",component:home},
+  {
+    path:"/home/:id",
+    component:home,
+    props:true,
+        children:[
+            {path:"goods",component:goods},
+            {path:"ratings",component:ratings},
+            {path:"sellers",component:sellers},
+            {path:"",redirect:"goods"}
+        ]
+  },
   {
     path:"/classify",
     component:classify,
